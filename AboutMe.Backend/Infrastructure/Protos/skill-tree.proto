@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+option csharp_namespace = "AboutMe.Backend.Infrastructure.Protos";
+
+package skill_tree;
+
+service SkillTries {
+    rpc GetSkillTree (SkillTreeRequest) returns (SkillTreeResponse);
+}
+
+message SkillTree {
+     string id = 1;
+     string name = 2;
+     string description = 3;
+     string skillNodes = 4;
+}
+
+message SkillNode {
+     string id = 1;
+     string skillTree = 2;
+     string name = 3;
+     string description = 4;
+     int32 progress = 5;
+     string icon = 6;
+    string rightNode = 7;
+    string leftNode = 8;
+    string upperNode = 9;
+    string lowerNode = 10;
+}
+
+message SkillTreeResponse {
+     SkillTree skillTree = 1;
+    repeated SkillNode skillNodes = 2;
+}
+
+message SkillTreeRequest {
+     string id = 1;
+}
